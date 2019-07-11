@@ -1,0 +1,203 @@
+
+@import url("https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet");
+
+@import url("https://fonts.googleapis.com/css?family=Montserrat|Open+Sans" rel="stylesheet");
+@import url("//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet");
+.App {
+  text-align: center;
+  height:auto;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 20vmin;
+  pointer-events: none;
+}
+
+.App-header {
+  background-color: #143a88;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #152f36;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+
+
+  
+  .section{
+    display:flex;
+    width:100%;
+    border-color:grey;
+    border-width:2px;
+    border-style:solid;
+  }
+
+  
+  
+#timer-label{
+    font-size:2em;
+}
+#app{
+  display:flex;
+  width:100%;
+  height:auto;
+  font-family: "Orbitron"; 
+}
+#title{
+  margin-left:5%;
+  font-size:2.5em;
+}
+.list_header{
+  margin-left:5%;
+  font-size:2.5em;
+}
+#session-label{
+  font-size:1.3em;
+  margin-right:17%;
+  
+}
+#break-label{
+  font-size:1.3em;
+  margin-right:17%;
+}
+
+#incrementpanel1{
+  margin-left:10%;
+}
+#incrementpanel2
+{margin-left:5%;
+}
+.counter{
+  margin-left:16%;
+}
+
+#buttonpanel{
+  margin-left:31%;
+}
+
+.Pomodoro{
+  display:flex;
+  direction:column; 
+  height:auto;
+
+
+border-color:grey;
+border-width:2px;
+border-style:solid;
+}
+
+.main{
+  margin-left:5%;
+}
+
+#time-left{
+  font-size:2.5em;
+  color:#3f68aa;
+}
+
+#session-length{
+  font-size:2em;
+}
+
+#break-length{
+  font-size:2em;
+}
+
+.task_text{
+  margin-left: 20%;
+  font-size:1.3em;
+  margin-right:3%;
+  margin-top:2%;
+
+}
+
+.row-header{
+    margin:0px auto;
+    padding:0px auto;
+    }
+    .row-content {
+    margin:0px auto;
+    padding: 50px 0px 50px 0px;
+    border-bottom: 1px ridge;
+    min-height:400px;
+    }
+    .footer{
+    background-color: #D1C4E9;
+    margin:0px auto;
+    padding: 20px 0px 20px 0px;
+    }
+    .footerinfo{
+      margin-left:5%;
+    }
+    .jumbotron {
+   
+    padding:70px 30px 70px 30px;
+    margin:0px auto;
+    background: #9575CD ;
+    color:floralwhite;
+    }
+    .main_timer{
+      font-size:2em;
+      color: #143a88;
+    }
+    .main_timer_label{
+      color: #111213;
+    }
+    address{
+    font-size:80%;
+    margin:0px;
+    color:#0f0f0f;
+    }
+    .navbar-dark {
+    background-color: #512DA8;
+    }
+
+    .page-enter {
+        opacity: 0.01;
+        transform: translateX(-100%);
+        }
+        .page-enter-active {
+        opacity: 1;
+        transform: translateX(0%);
+        transition: all 300ms ease-in;
+        }
+        .page-exit {
+        opacity: 1;
+        transform: translateX(0%);
+        }
+        .page-exit-active {
+        opacity: 0.01;
+        transform: translateX(100%);
+        transition: all 300ms ease-out;
+        }   
