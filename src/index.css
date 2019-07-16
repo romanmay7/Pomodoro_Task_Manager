@@ -182,7 +182,11 @@ border-style:solid;
     .navbar-dark {
     background-color: #512DA8;
     }
+     .nav-link{
+      color:white;
+     }
 
+     
     .page-enter {
         opacity: 0.01;
         transform: translateX(-100%);

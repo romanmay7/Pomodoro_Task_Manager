@@ -4,20 +4,17 @@ class Pomodoro extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
-        count: 5,
-        //count2:25,
-        //session2:1500,
-        //running:0
-   
         
       };
+     
      //Bound  our functions
-     //this.increment=this.increment.bind(this);
+       this.increment=this.increment.bind(this);
        this.decrement=this.decrement.bind(this);
        this.increment2=this.increment2.bind(this);
        this.decrement2=this.decrement2.bind(this);
        this.handlePlayClick=this.handlePlayClick.bind(this);
        this.handlePauseClick=this.handlePauseClick.bind(this);
+       this.handleResetClick=this.handleResetClick.bind(this);
        this.sleep=this.sleep.bind(this);
       // 
     } 
@@ -39,56 +36,44 @@ class Pomodoro extends React.Component {
     
     //no need for binding with usage of ES6 arrow function,more clear syntax as result
     //----------------------------------------------------------------------------------
-       increment = () => (this.setState((prevState) => ({ count:prevState.count+1 })))
-    //-------------------------------------------------------------------------------- --   
+       //increment = () => (this.setState((prevState) => ({ count:prevState.count+1 })))
+    //-------------------------------------------------------------------------------- --
+       increment(){
+        if((this.props.break_length<60)&&(this.props.running==0)){
+         this.props.incrementBreakSession();
+            }
+          }
+    
        decrement(){
-         if((this.state.count>1)&&(this.props.running==0)){
-         this.setState({count:this.state.count-1})
+         if((this.props.break_length>1)&&(this.props.running==0)){
+         this.props.decrementBreakSession();
          }
        }
        increment2(){
-         if((this.state.count2<60)&&(this.props.running==0)){
-        //this.setState({count2:this.state.count2+1});
+         if((this.props.session_length<60)&&(this.props.running==0)){
         this.props.incrementTimer();
-        //this.setState({session2:(this.state.count2+1)*60})
-        //this.props.incrementTimer({session2:(this.state.count2+1)*60});
         
                }
                   }
-      decrement2(){
+       decrement2(){
         if((this.props.session_length>1)&&(this.props.running==0)){
-        //this.setState({count2:this.state.count2-1});
         this.props.decrementTimer();
-        //this.props.incrementTimer({session2:(this.state.count2-1)*60});
         }
       }
   
-       handlePlayClick() {
-         document.getElementById("time-left").style.color = '#3f68aa';
+      handlePlayClick() {
+           // document.getElementById("time-left").style.color = '#3f68aa';
          if(this.props.running==0){
-       //  this.setState({running:1})
-         document.getElementById("timer-label").innerHTML ="Session";
-
-
-        this.state.incrementer = setInterval( () =>{
-        //this.setState({session2: this.state.session2 - 1})  
-        this.props.startTimer();
-        if(this.props.session_length<0) 
-        {
-        this.handlePauseClick()
-        document.getElementById("beep").play();
-         this.sleep(1000);
-        this.setState({session2: this.state.count*60})
-        this.initiateBreak()
-        }}
-      , 1000);
-
-         }else this.handlePauseClick()
-    }
+           //  this.setState({running:1})
+           // document.getElementById("timer-label").innerHTML ="Session";
+             this.props.startTimer();  }
+         else this.handlePauseClick()
+    
+  }
       initiateBreak(){
         document.getElementById("timer-label").innerHTML ="Break";
          document.getElementById("time-left").style.color = '#ead920';
-        this.incrementer = setInterval( () =>{
+        this.state.incrementer = setInterval( () =>{
         this.setState({session2: this.state.session2 - 1})
         if(this.state.session2<0)
         {this.handlePauseClick()
@@ -100,24 +85,16 @@ class Pomodoro extends React.Component {
       }
     
     handlePauseClick() {
-      alert("goo")
-      clearInterval(this.state.incrementer);
-      this.setState({
-        lastClearedIncrementer: this.state.incrementer
-      });
-      this.props.pauseTimer();
-     // this.setState({running:0})
+     this.props.pauseTimer();
     }
     
     handleResetClick()
-    {   this.handlePauseClick()
+    {   //this.handlePauseClick()
         document.getElementById("timer-label").innerHTML ="Session";
        var myAudio = document.getElementById("beep"); 
        myAudio.pause();
-       myAudio.currentTime = 0;
-        //this.setState({count2:25})
-        //this.setState({count:5})
-        //this.setState({session2:1500})
+        myAudio.currentTime = 0;
+
         this.props.resetTimer();
         //this.setState({running:0})
         //this.props.stopTimer()
@@ -137,7 +114,7 @@ class Pomodoro extends React.Component {
             <div id="break-label">Break Length:</div>
             <div className="row counter">
              <button class="btn fa fa-angle-double-up" id="break-increment" onClick={this.increment}></button>
-             <div id="break-length">{this.state.count}</div>
+             <div id="break-length">{this.props.break_length}</div>
              <button class="btn fa fa-angle-double-down" id="break-decrement" onClick={this.decrement}></button>    
             </div>
          </div>
@@ -155,8 +132,8 @@ class Pomodoro extends React.Component {
                
          <div id="timerpanel" className="column"> 
           <br></br>
-          <div id="timer-label">Session</div>
-          <div id="time-left">{this.getMinutes()}:{this.getSeconds()}</div></div>
+          <div id="timer-label">{this.props.label}</div>
+          <div id="time-left" style={{color:this.props.timer_color}}>{this.getMinutes()}:{this.getSeconds()}</div></div>
   
           <div id="buttonpanel" className="row">
               <button id="start_stop" onClick={this.handlePlayClick}>Play</button>
@@ -169,7 +146,7 @@ class Pomodoro extends React.Component {
           <a target="_blank" href=""> Roman Mayerson 2019</a>
         </div>     
           
-          <audio id="beep"  src="https://goo.gl/65cBl1" preload="auto"></audio>
+          
         </div>
         </div>
       );

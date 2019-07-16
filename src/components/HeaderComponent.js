@@ -12,6 +12,9 @@ class Header extends Component {
         this.toggleNav = this.toggleNav.bind(this);
         this.toggleModal=this.toggleModal.bind(this);
         this.handleLogin = this.handleLogin.bind(this);
+        this.getMinutes=this.getMinutes.bind(this);
+        this.getSeconds=this.getSeconds.bind(this);
+        this.getMinutesSeconds=this.getMinutesSeconds.bind(this);
 
     }
     
@@ -23,6 +26,11 @@ class Header extends Component {
       let s=x.toString();
       if(s.length < 2){s="0"+s }
       return s;}
+
+    getMinutesSeconds(){
+      return <span>{this.getMinutes()}:{this.getSeconds()}</span>
+    }
+
 
       toggleNav() {
         this.setState({
@@ -38,7 +46,7 @@ class Header extends Component {
       }
       handleLogin(event) {
         this.toggleModal();
-        //Retrieving values directtly from the DOMand poosting them in alert message
+        //Retrieving values directtly from the DOM and poosting them in alert message
         alert("Username: " + this.username.value + " Password: " + this.password.value + " Remember: " + this.remember.checked);
         event.preventDefault();
         }
@@ -53,12 +61,14 @@ render() {
         <div className="col-12 col-sm-6">
         <div className="row"><NavLink className="nav-link"  to='/home'><span className="fa fa-home fa-lg"></span>  Home</NavLink>
         
-        <NavLink className="nav-link" to='/about'><span className="fa fa-info fa-lg"></span>  About Us</NavLink>
+        <NavLink className="nav-link" to='/about'><span className="fa fa-info fa-lg"></span>  About Pomodoro</NavLink>
         </div>
         <h1>Pomodoro Task Manager</h1>
         <p>Increase your daily productivity with this simple Widget</p>
         <div className="main_timer_label" >Currently Executing:</div>
-        <div className="main_timer">{this.props.current_task}:{this.getMinutes()}:{this.getSeconds()}</div>
+      
+        <div className="main_timer">{this.props.tasks[0]&&this.props.running ?this.props.tasks[this.props.task_index ]  : 'None'}:
+        {this.props.running ? this.getMinutesSeconds() : '00:00'}</div>
         </div>
        </div>
 

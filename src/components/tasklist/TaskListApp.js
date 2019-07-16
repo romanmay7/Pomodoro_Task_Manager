@@ -4,10 +4,8 @@ import Header from './Header';
 import Tasks from './Tasks';
 
 export default class TaskListApp extends React.Component {
-  state = {
-    tasks: [],
-    selectedTask: undefined
-  };
+ 
+  /*
   handleDeleteTasks = () => {
     this.setState(() => ({ tasks: [] }));
   };
@@ -30,7 +28,7 @@ export default class TaskListApp extends React.Component {
     this.setState((prevState) => ({
       tasks: prevState.tasks.concat(task)
     }));
-  };
+  };*/
   componentDidMount() {
     try {
       const json = localStorage.getItem('tasks');
@@ -43,7 +41,7 @@ export default class TaskListApp extends React.Component {
       // Do nothing at all
     }
   }
-  componentDidUpdate(prevProps, prevState) {
+ /* componentDidUpdate(prevProps, prevState) {
     if (prevState.tasks.length !== this.state.tasks.length) {
       const json = JSON.stringify(this.state.tasks);
       localStorage.setItem('tasks', json);
@@ -51,7 +49,7 @@ export default class TaskListApp extends React.Component {
   }
   componentWillUnmount() {
   //  console.log('componentWillUnmount');
-  }
+  }*/
   render() {
 
     return (
@@ -61,17 +59,17 @@ export default class TaskListApp extends React.Component {
 
           <div className="widget">
             <Tasks
-              tasks={this.state.tasks}
-              handleDeleteTask={this.handleDeleteTask}
+              tasks={this.props.tasks}
+              handleDeleteTask={this.props.handleDeleteTask}
             />
             <hr></hr>
             <AddTask
-              handleAddTask={this.handleAddTask}
+              handleAddTask={this.props.handleAddTask}
             />
             <br></br><hr></hr>
             <button
             className="button button--link"
-            onClick={this.handleDeleteTasks}
+            onClick={this.props.handleDeleteTasks}
           >
             Remove All
         </button>
