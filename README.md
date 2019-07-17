@@ -1,3 +1,25 @@
+﻿## “Pomodoro Task Manager” 
+--------------------------------
+
+### 1. Introduction
+ 
+• The Main Idea of my Web Application is to create Pomodoro inspired Task Management Tool 
+It is a Fusion of Pomodoro Timer and a To-Do List 
+A User can divide their work day to the number of Tasks(Pomodoros), saved inside dynamic Task List  
+Then they can choose the length of their Task Session and length of their Break  
+Finally they can start their daily Task Sprint by pushing on Play Button and initializing 
+the Timer ,which will show their progress through the current task and consequently 
+Continuing to Break Session and then to the Next Task 
+•  The Goals of the Project: Create React.js Web App Implementation  of Pomodoro Task Manager 
+•  The values / benefits (tangible and intangible) this application can bring to a company/organization/end-user: Increasing of daily productivity on personal  
+and corporative level
+
+
+##by Roman Meyerson 15/07/2019
+
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
