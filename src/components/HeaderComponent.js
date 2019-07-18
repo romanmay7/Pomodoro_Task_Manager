@@ -67,7 +67,7 @@ render() {
         <p>Increase your daily productivity with this simple Widget</p>
         <div className="main_timer_label" >Currently Executing:</div>
       
-        <div className="main_timer">{this.props.tasks[0]&&this.props.running ?this.props.tasks[this.props.task_index ]  : 'None'}:
+        <div className="main_timer">{this.props.tasks[0]&&this.props.running&&(!this.props.break) ?this.props.tasks[this.props.task_index ]  : this.props.defaultLabel}:
         {this.props.running ? this.getMinutesSeconds() : '00:00'}</div>
         </div>
        </div>

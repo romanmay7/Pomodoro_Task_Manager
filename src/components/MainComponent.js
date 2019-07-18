@@ -27,6 +27,8 @@ class Main extends Component {
 
   this.state = {
     running:false,
+    pause:false,
+    defaultLabel:'None',
     break:false,
     task_index:0,
     label:"Session:",
@@ -94,13 +96,19 @@ decrementBreakSession(){
 
 
 startTimer(){
+  if(this.state.break==false)
+  {
   //document.getElementById("time-left").style.color = '#3f68aa';
   this.setState({label: "Session:"});
   this.setState({timer_color:'#3f68aa'});
   this.setState({running:true});
  // document.getElementById("timer-label").innerHTML ="Session";
-  if(this.state.running==0){this.setState({running:1})}
-  this.setState({timer_value:this.state.session_length*60 });
+  if(this.state.running==false){this.setState({running:true})}
+   if (this.state.pause==false)
+    {
+    this.setState({timer_value:this.state.session_length*60 });
+    }
+   else{this.setState({pause:false})}
 
    this.player = setInterval( () =>{
     this.setState({timer_value: this.state.timer_value - 1});
@@ -116,7 +124,10 @@ startTimer(){
 
  this.setState({player: this.player}, function () {
     console.log(this.state.player);
-});}
+});
+  }
+  else this.startBreak();
+}
 
 startBreak(){
   
@@ -124,9 +135,15 @@ startBreak(){
  this.setState({label: "Break:"});
  this.setState({timer_color:'#ead920'});
  this.setState({break:true});
+ this.setState({running:true});
+ this.setState({defaultLabel:'Break'})
  
   //document.getElementById("time-left").style.color = '#ead920';
-  this.setState({timer_value: this.state.break_length*60})
+  if (this.state.pause==false){
+    this.setState({timer_value: this.state.break_length*60})
+  }
+  else{this.setState({pause:false})}
+
   this.player = setInterval( () =>{
   this.setState({timer_value: this.state.timer_value - 1})
   if(this.state.timer_value<0)
@@ -150,22 +167,33 @@ setTimer(value){
 
 
 resetTimer(){
+  this.stopTimer();
   this.setState({timer_value:1500});
   this.setState({session_length:25});
   this.setState({break_length:5});
-  this.setState({running:0})
+  this.setState({running:false})
+  this.setState({break:false})
+  this.setState({defaultLabel:'None'})
 }
 
 pauseTimer(){
-  this.setState({running:0})
-
+  
+  if(this.state.running)
+  {
+  this.setState({running:false})
+  this.setState({pause:true})
+ 
   //alert(this.state.player);
   clearInterval(this.state.player);
   this.setState({
     lastClearedIncrementer: this.state.player
   });
- // alert(this.state.player);
-
+   }
+   else 
+    if(this.state.break)
+     this.startBreak();
+     else
+     this.startTimer();
 }
 
 stopTimer(){
@@ -227,7 +255,8 @@ componentDidMount(){
   
     return (
       <div className="App">
-        <Header running={this.state.running} timer_value={this.state.timer_value} tasks={this.state.tasks} task_index={this.state.task_index}/>
+        <Header running={this.state.running} timer_value={this.state.timer_value} tasks={this.state.tasks}
+        defaultLabel={this.state.defaultLabel} break={this.state.break} task_index={this.state.task_index}/>
         <TransitionGroup>
         <CSSTransition key={this.props.location.key} classNames="page" timeout={300}>
          <Switch>
@@ -236,7 +265,7 @@ componentDidMount(){
              setTimer={this.setTimer} resetTimer={this.resetTimer} decrementTimer={this.decrementTimer} decrementBreakSession={this.decrementBreakSession}
               incrementTimer={this.incrementTimer} incrementBreakSession={this.incrementBreakSession} pauseTimer={this.pauseTimer}
                stopTimer={this.stopTimer} running={this.state.running} handleDeleteTasks={this.handleDeleteTasks}
-               handleClearSelectedTask={this.handleClearSelectedTask} handleDeleteTask={this.handleDeleteTask}
+               handleClearSelectedTask={this.handleClearSelectedTask} handleDeleteTask={this.handleDeleteTask} 
                handleAddTask={this.handleAddTask} tasks={this.state.tasks} task_index={this.state.task_index}label={this.state.label} timer_color={this.state.timer_color}/>} />
             <Route exact path='/about' component={() =><About />} />
            <Redirect to="/home" />
