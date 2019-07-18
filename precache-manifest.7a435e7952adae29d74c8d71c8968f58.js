@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "464059c708f31b347617a515470aa1a4",
+    "revision": "201d9dedda7621fbd1ab9a94270b21df",
     "url": "/Pomodoro_Task_Manager/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Pomodoro_Task_Manager/static/css/2.510409cd.chunk.css"
   },
   {
-    "revision": "bd8291a98e8010c6fd99",
+    "revision": "cb81e6f0280d19fea2ef",
     "url": "/Pomodoro_Task_Manager/static/css/main.056e31e3.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Pomodoro_Task_Manager/static/js/2.6b2e1192.chunk.js"
   },
   {
-    "revision": "bd8291a98e8010c6fd99",
-    "url": "/Pomodoro_Task_Manager/static/js/main.abe278d6.chunk.js"
+    "revision": "cb81e6f0280d19fea2ef",
+    "url": "/Pomodoro_Task_Manager/static/js/main.f5dd7951.chunk.js"
   },
   {
     "revision": "6d2b46b4cd37c74c3a1a",
