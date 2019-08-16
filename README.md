@@ -14,8 +14,8 @@ Continuing to Break Session and then to the Next Task
 •  The values / benefits (tangible and intangible) this application can bring to a company/organization/end-user: Increasing of daily productivity on personal  
 and corporative level
 
-Project hosted:
-https://github.com/RomanMayer7/Pomodoro_Task_Manager/tree/gh-pages
+Project hosted in GitHub Pages:
+https://romanmayer7.github.io/Pomodoro_Task_Manager
 
 #by Roman Meyerson 15/07/2019
 
