@@ -14,7 +14,8 @@ Continuing to Break Session and then to the Next Task
 •  The values / benefits (tangible and intangible) this application can bring to a company/organization/end-user: Increasing of daily productivity on personal  
 and corporative level
 
-Demo Video Link: https://www.youtube.com/watch?v=j6MjPpHG9tQ
+Demo Video Link:
+https://www.youtube.com/watch?v=j6MjPpHG9tQ
 Project hosted in GitHub Pages:
 https://romanmayer7.github.io/Pomodoro_Task_Manager
 
